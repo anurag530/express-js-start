@@ -14,7 +14,7 @@ const requestHandler=(req,res)=>{
         res.write(`<body> ${data} </body>`);
         res.write(`<body><form action="/message" method="post"><input type="text" name="message"><button type="submit">send</button></form></body>`);
         res.write('</html>');
-        return res.end();
+         return res.end();
         });
     }
      if(url==='/message' && method==='POST'){
@@ -23,7 +23,7 @@ const requestHandler=(req,res)=>{
             console.log(chunk);
             body.push(chunk);
         });
-        req.on('end',()=>{
+         req.on('end',()=>{
             const parseBody=Buffer.concat(body).toString();
             const message=parseBody.split('=')[1];
             fs.writeFileSync('message.txt',message);
